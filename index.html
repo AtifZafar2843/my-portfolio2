@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atif - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#0A192F] text-[#CCD6F6]">
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Logo -->
+    <div class="fixed top-6 left-6 z-50">
+        <a href="#hero" class="text-2xl font-bold tracking-wider hover:text-gray-300 transition-colors">
+            ATIF ZAFAR
+        </a>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div x-data="{ isOpen: false }" class="lg:hidden">
+        <!-- Hamburger Button -->
+        <button 
+            @click="isOpen = !isOpen"
+            class="fixed top-6 right-6 z-50 p-2 rounded-lg hover:bg-zinc-800 transition-colors"
+        >
+            <div class="w-6 h-5 relative">
+                <span 
+                    class="absolute w-full h-0.5 bg-white transform transition-all duration-300"
+                    :class="isOpen ? 'rotate-45 top-2' : 'top-0'"
+                ></span>
+                <span 
+                    class="absolute w-full h-0.5 bg-white top-2 transition-all duration-300"
+                    :class="isOpen ? 'opacity-0' : 'opacity-100'"
+                ></span>
+                <span 
+                    class="absolute w-full h-0.5 bg-white transform transition-all duration-300"
+                    :class="isOpen ? '-rotate-45 top-2' : 'top-4'"
+                ></span>
+            </div>
+        </button>
+
+        <!-- Mobile Menu Overlay -->
+        <div 
+            x-show="isOpen"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 bg-black bg-opacity-95 z-40"
+        >
+            <nav class="h-full flex flex-col items-center justify-center space-y-8">
+                <a 
+                    href="#hero" 
+                    @click="isOpen = false"
+                    class="text-2xl font-semibold hover:text-gray-300 transition-colors"
+                >
+                    Home
+                </a>
+                <a 
+                    href="#about" 
+                    @click="isOpen = false"
+                    class="text-2xl font-semibold hover:text-gray-300 transition-colors"
+                >
+                    About
+                </a>
+                <a 
+                    href="#projects" 
+                    @click="isOpen = false"
+                    class="text-2xl font-semibold hover:text-gray-300 transition-colors"
+                >
+                    Projects
+                </a>
+                <a 
+                    href="#contact" 
+                    @click="isOpen = false"
+                    class="text-2xl font-semibold hover:text-gray-300 transition-colors"
+                >
+                    Contact
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:block fixed top-0 left-0 right-0 z-40 py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-end space-x-8">
+                <a href="#about" class="text-sm font-medium text-[#8892B0] hover:text-[#64FFDA] transition-colors">About</a>
+                <a href="#projects" class="text-sm font-medium hover:text-gray-300 transition-colors">Projects</a>
+                <a href="#contact" class="text-sm font-medium hover:text-gray-300 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="h-screen relative flex items-center justify-center overflow-hidden px-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 sm:mb-6 opacity-0 translate-y-10" id="hero-heading">
+                Hi, I'm Atif
+            </h1>
+            <div class="h-8 sm:h-10 md:h-12 mb-8 sm:mb-12">
+                <p class="text-lg sm:text-xl md:text-2xl text-gray-400 opacity-0" id="hero-subheading">
+                    <span class="typing-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent font-semibold"></span>
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                <a href="#projects" class="px-6 sm:px-8 py-3 sm:py-4 bg-[#64FFDA] text-[#0A192F] font-semibold rounded-full hover:bg-[#112240] hover:text-[#64FFDA] transition-colors">
+                    View Projects
+                </a>
+                <a href="#contact" class="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white font-semibold rounded-full hover:bg-white hover:text-black transition-colors">
+                    Let's Talk
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2" id="scroll-indicator">
+            <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="min-h-screen py-16 sm:py-20 px-4">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <!-- Left Column - Image -->
+                <div class="about-image opacity-0 order-2 md:order-1" id="about-image">
+                    <div class="grid grid-cols-1 gap-12 p-12 bg-[#112240] rounded-2xl">
+                        <!-- Top Row: Projects and Clients -->
+                        <div class="grid grid-cols-2 gap-8">
+                            <!-- Projects Counter -->
+                            <div class="text-center">
+                                <div class="text-5xl sm:text-6xl md:text-7xl font-bold mb-3">
+                                    <span class="counter" data-target="10">0</span>+
+                                </div>
+                                <p class="text-xl text-gray-400">Projects</p>
+                            </div>
+
+                            <!-- Clients Counter -->
+                            <div class="text-center">
+                                <div class="text-5xl sm:text-6xl md:text-7xl font-bold mb-3">
+                                    <span class="counter" data-target="2">0</span>+
+                                </div>
+                                <p class="text-xl text-gray-400">Freelance Clients</p>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Row: Chai Counter -->
+                        <div class="text-center border-t border-zinc-800 pt-8">
+                            <div class="text-5xl sm:text-6xl md:text-7xl font-bold mb-3">
+                                <span class="counter" data-target="1">0</span>
+                            </div>
+                            <p class="text-xl text-gray-400">Chai Every Hour <span class="text-3xl">😎</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Content -->
+                <div class="space-y-4 sm:space-y-6 order-1 md:order-2">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold opacity-0" id="about-heading">About Me</h2>
+                    <p class="text-base sm:text-lg text-gray-400 opacity-0" id="about-text">
+                        Hi, I'm Atif — a frontend developer based in Aligarh, India.  
+I specialize in building modern, responsive websites with a focus on animations, smooth UX, and high performance.  
+My goal is to blend design and development to create digital experiences that are fast, functional, and feel alive.
+                    </p>
+                    
+                    <div class="space-y-4 opacity-0" id="about-highlights">
+                        <h3 class="text-xl font-semibold">What I Do</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                Frontend Development
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                Freelancing
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                Responsive Business Websites
+                            </li>
+                        </ul>
+
+                        <h3 class="text-xl font-semibold mt-6">Tech Stack</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                HTML, CSS, JavaScript
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                Tailwind CSS, GSAP, Locomotive.js
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-white rounded-full mr-3"></span>
+                                React.js (Learning), GitHub, Netlify
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 border-2 border-white font-semibold rounded-full hover:bg-white hover:text-black transition-colors opacity-0" id="resume-button">
+                        Download Resume
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="min-h-screen py-16 sm:py-20 px-4 bg-zinc-900">
+        <div class="container mx-auto">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 opacity-0" id="projects-heading">My Works</h2>
+            
+            <!-- Project Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12">
+                <button class="project-tab active px-4 sm:px-6 py-2 rounded-full border-2 border-white font-semibold transition-colors text-sm sm:text-base" data-category="all">
+                    All
+                </button>
+                <button class="project-tab px-4 sm:px-6 py-2 rounded-full border-2 border-white font-semibold transition-colors text-sm sm:text-base" data-category="major">
+                    Major Projects
+                </button>
+                <button class="project-tab px-4 sm:px-6 py-2 rounded-full border-2 border-white font-semibold transition-colors text-sm sm:text-base" data-category="minor">
+                    Mini Builds
+                </button>
+                <button class="project-tab px-4 sm:px-6 py-2 rounded-full border-2 border-white font-semibold transition-colors text-sm sm:text-base" data-category="client">
+                    Freelance Projects
+                </button>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Project Card 1 -->
+                <div class="project-card opacity-0" data-category="major">
+                    <div class="bg-[#112240] rounded-lg overflow-hidden h-full flex flex-col">
+                        <div class="aspect-video bg-zinc-700 relative">
+                            <svg class="w-full h-full" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="225" fill="#27272A"/>
+                                <path d="M200 112.5 L200 112.5 M200 112.5 L200 112.5" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="p-4 sm:p-6 flex-grow flex flex-col">
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">E-Commerce Platform</h3>
+                            <p class="text-sm sm:text-base text-gray-400 mb-4 flex-grow">A full-stack e-commerce solution with real-time inventory management and payment processing.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">React</span>
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">Node.js</span>
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">MongoDB</span>
+                            </div>
+                            <div class="flex gap-3 sm:gap-4">
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">Live Demo</a>
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-black transition-colors text-sm sm:text-base">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card opacity-0" data-category="client">
+                    <div class="bg-[#112240] rounded-lg overflow-hidden h-full flex flex-col">
+                        <div class="aspect-video bg-zinc-700 relative">
+                            <svg class="w-full h-full" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="225" fill="#27272A"/>
+                                <path d="M200 112.5 L200 112.5 M200 112.5 L200 112.5" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="p-4 sm:p-6 flex-grow flex flex-col">
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">Portfolio Website</h3>
+                            <p class="text-sm sm:text-base text-gray-400 mb-4 flex-grow">A modern portfolio website with smooth animations and responsive design.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">HTML</span>
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">Tailwind</span>
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">GSAP</span>
+                            </div>
+                            <div class="flex gap-3 sm:gap-4">
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">Live Demo</a>
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-black transition-colors text-sm sm:text-base">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card opacity-0" data-category="minor">
+                    <div class="bg-[#112240] rounded-lg overflow-hidden h-full flex flex-col">
+                        <div class="aspect-video bg-zinc-700 relative">
+                            <svg class="w-full h-full" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="225" fill="#27272A"/>
+                                <path d="M200 112.5 L200 112.5 M200 112.5 L200 112.5" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="p-4 sm:p-6 flex-grow flex flex-col">
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">Task Manager</h3>
+                            <p class="text-sm sm:text-base text-gray-400 mb-4 flex-grow">A simple but powerful task management application with drag-and-drop functionality.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">Vue.js</span>
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">Firebase</span>
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">Tailwind</span>
+                            </div>
+                            <div class="flex gap-3 sm:gap-4">
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">Live Demo</a>
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-black transition-colors text-sm sm:text-base">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="min-h-screen py-16 sm:py-20 px-4">
+        <div class="container mx-auto max-w-2xl">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 opacity-0" id="contact-heading">Get In Touch</h2>
+            
+            <form id="contact-form" class="space-y-4 sm:space-y-6 opacity-0">
+                <div class="space-y-2">
+                    <label for="name" class="block text-sm font-medium">Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        required
+                        class="w-full px-4 py-3 bg-[#112240] border border-[#8892B0] rounded-lg focus:outline-none focus:border-[#64FFDA] transition-colors text-sm sm:text-base"
+                        placeholder="Your name"
+                    >
+                </div>
+
+                <div class="space-y-2">
+                    <label for="email" class="block text-sm font-medium">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required
+                        class="w-full px-4 py-3 bg-[#112240] border border-[#8892B0] rounded-lg focus:outline-none focus:border-[#64FFDA] transition-colors text-sm sm:text-base"
+                        placeholder="your@email.com"
+                    >
+                </div>
+
+                <div class="space-y-2">
+                    <label for="message" class="block text-sm font-medium">Message</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        required
+                        rows="6"
+                        class="w-full px-4 py-3 bg-[#112240] border border-[#8892B0] rounded-lg focus:outline-none focus:border-[#64FFDA] transition-colors resize-none text-sm sm:text-base"
+                        placeholder="Your message..."
+                    ></textarea>
+                </div>
+
+                <button 
+                    type="submit"
+                    class="w-full px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-colors text-sm sm:text-base"
+                >
+                    Send Message
+                </button>
+            </form>
+
+            <!-- Toast Container -->
+            <div id="toast" class="fixed bottom-8 right-8 transform translate-y-full opacity-0 transition-all duration-300">
+                <div class="px-4 sm:px-6 py-3 sm:py-4 rounded-lg shadow-lg">
+                    <p id="toast-message" class="text-white text-sm sm:text-base"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#112240] py-12 px-4 relative border-t border-[#1E3A5F]">
+        <div class="container mx-auto max-w-6xl">
+            <!-- Logo and Navigation -->
+            <div class="flex flex-col items-center space-y-8">
+                <!-- Logo -->
+                <a href="#hero" class="text-2xl font-bold hover:text-[#64FFDA] transition-colors">
+                    Atif Zafar
+                </a>
+
+                <!-- Quick Links -->
+                <nav class="flex flex-wrap justify-center gap-6">
+                    <a href="#about" class="text-sm text-[#8892B0] hover:text-[#64FFDA] transition-colors">About</a>
+                    <a href="#projects" class="text-sm text-[#8892B0] hover:text-[#64FFDA] transition-colors">Projects</a>
+                    <a href="#contact" class="text-sm text-[#8892B0] hover:text-[#64FFDA] transition-colors">Contact</a>
+                </nav>
+
+                <!-- Social Icons -->
+                <div class="flex gap-6">
+                    <a href="#" class="text-[#8892B0] hover:text-[#64FFDA] transition-colors" aria-label="GitHub">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-[#8892B0] hover:text-[#64FFDA] transition-colors" aria-label="LinkedIn">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-[#8892B0] hover:text-[#64FFDA] transition-colors" aria-label="Twitter">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Copyright -->
+                <p class="text-sm text-[#8892B0]">
+                    © 2024 Portfolio. All rights reserved.
+                </p>
+            </div>
+
+            <!-- Scroll to Top Button -->
+            <button 
+                id="scroll-top"
+                class="fixed bottom-8 right-8 bg-[#64FFDA] text-[#0A192F] p-3 rounded-full shadow-lg opacity-0 transition-all duration-300 hover:bg-[#4FD1C5]"
+                aria-label="Scroll to top"
+            >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                </svg>
+            </button>
+        </div>
+    </footer>
+
+    <!-- EmailJS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
