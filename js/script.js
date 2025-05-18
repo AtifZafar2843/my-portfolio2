@@ -32,10 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Smooth scroll to top
     scrollTopButton.addEventListener('click', () => {
-        gsap.to(window, {
-            duration: 1,
-            scrollTo: { y: 0, autoKill: false },
-            ease: 'power2.inOut'
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     });
 
