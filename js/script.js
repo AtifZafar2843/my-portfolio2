@@ -397,10 +397,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Contact section animations
     const contactTl = gsap.timeline({
         scrollTrigger: {
-            trigger: '#contact-heading',
+            trigger: '#contact',
             start: 'top 80%',
             end: 'bottom 20%',
-            toggleActions: 'play none none reverse'
+            toggleActions: 'play none none none',
+            once: true // Animation plays only once
         }
     });
 
@@ -417,6 +418,33 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 1,
             ease: 'power2.out'
         }, '-=0.4');
+
+    // Ensure contact form is visible on mobile
+    function checkContactVisibility() {
+        const contactSection = document.getElementById('contact');
+        const contactForm = document.getElementById('contact-form');
+        const contactHeading = document.getElementById('contact-heading');
+        
+        if (window.innerHeight >= contactSection.offsetHeight) {
+            // If viewport height is greater than section height, show immediately
+            gsap.to(contactHeading, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: 'power2.out'
+            });
+            gsap.to(contactForm, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: 'power2.out'
+            });
+        }
+    }
+
+    // Check on load and resize
+    window.addEventListener('load', checkContactVisibility);
+    window.addEventListener('resize', checkContactVisibility);
 
     // Form submission handling
     const form = document.getElementById('contact-form');
