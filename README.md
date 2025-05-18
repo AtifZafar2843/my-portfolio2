@@ -34,19 +34,23 @@ portfolio/
 └── README.md          # Project documentation
 ```
 
-## 🚀 Live Projects
+## �� Live Projects
+
+### Major Projects
+- [Job Application Tracker](https://atifzafar2843.github.io/Job-application-tracker/) - A comprehensive job application management system with status tracking, statistics dashboard, and CSV export functionality
 
 ### Web Apps
-- [QR Code Generator](https://atifzafar2843.github.io/QRCode-Generator/)
-- [SpeedType Pro](https://atifzafar2843.github.io/Typing-Speed-Tester-App/)
-- [WeatherWise](https://atifzafar2843.github.io/Live-Weather-App/)
+- [QR Code Generator](https://atifzafar2843.github.io/QRCode-Generator/) - Dynamic QR code generator with customization options
+- [SpeedType Pro](https://atifzafar2843.github.io/Typing-Speed-Tester-App/) - Interactive typing speed test application
+- [WeatherWise](https://atifzafar2843.github.io/Live-Weather-App/) - Real-time weather forecast application
 
 ### Web Pages
-- [Gym Website](https://atifzafar2843.github.io/gym-website/)
-- [Salon Website](https://atifzafar2843.github.io/Salon-website/)
+- [Modern Portfolio](https://atifzafar2843.github.io/my-portfolio/) - Sleek and modern portfolio website
+- [Gym Website](https://atifzafar2843.github.io/gym-website/) - Modern fitness website with class schedules
+- [Salon Website](https://atifzafar2843.github.io/Salon-website/) - Elegant beauty salon website
 
 ### Client Work
-- [Khoobsurat Aligarh](https://khoobsurataligarh.com/)
+- [Khoobsurat Aligarh](https://khoobsurataligarh.com/) - Premium ethnic wear boutique website
 
 ## 🎯 Features in Detail
 
