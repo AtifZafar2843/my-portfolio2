@@ -293,35 +293,84 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: 'power2.out'
         }, '-=0.4');
 
-    // Project filtering functionality
+    // Project filtering
     const projectTabs = document.querySelectorAll('.project-tab');
     const projectCards = document.querySelectorAll('.project-card');
 
+    // Set Major Projects as default active tab
+    projectTabs.forEach(tab => {
+        if (tab.dataset.category === 'major') {
+            tab.classList.add('bg-white', 'text-black');
+        }
+    });
+
+    // Show only major projects by default
+    projectCards.forEach(card => {
+        if (card.dataset.category === 'major') {
+            gsap.to(card, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.5,
+                ease: 'power2.out'
+            });
+        } else {
+            gsap.to(card, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.5,
+                ease: 'power2.in',
+                onComplete: () => {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    });
+
     projectTabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            // Update active tab
-            projectTabs.forEach(t => t.classList.remove('active', 'bg-white', 'text-black'));
-            tab.classList.add('active', 'bg-white', 'text-black');
+            // Remove active state from all tabs
+            projectTabs.forEach(t => {
+                t.classList.remove('bg-white', 'text-black');
+            });
 
+            // Add active state to clicked tab
+            tab.classList.add('bg-white', 'text-black');
+
+            // Get the selected category
             const category = tab.dataset.category;
-
-            // Filter and animate cards
-            projectCards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    gsap.to(card, {
-                        opacity: 1,
-                        scale: 1,
-                        duration: 0.5,
-                        ease: 'power2.out'
-                    });
-                } else {
+            
+            // First, fade out all cards
+            const fadeOutPromises = Array.from(projectCards).map(card => {
+                return new Promise(resolve => {
                     gsap.to(card, {
                         opacity: 0,
                         scale: 0.8,
                         duration: 0.5,
+                        ease: 'power2.in',
+                        onComplete: () => {
+                            card.style.display = 'none';
+                            resolve();
+                        }
+                    });
+                });
+            });
+
+            // After all cards are faded out, fade in the selected category cards
+            Promise.all(fadeOutPromises).then(() => {
+                const selectedCards = Array.from(projectCards).filter(card => 
+                    card.dataset.category === category
+                );
+
+                selectedCards.forEach((card, index) => {
+                    card.style.display = 'block';
+                    gsap.to(card, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.5,
+                        delay: index * 0.2, // Add delay between each card
                         ease: 'power2.out'
                     });
-                }
+                });
             });
         });
     });

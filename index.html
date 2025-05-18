@@ -8,7 +8,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/colors.css">
 </head>
 <body class="bg-[#0A192F] text-[#CCD6F6]">
     <!-- Custom Cursor -->
@@ -217,29 +218,29 @@ My goal is to blend design and development to create digital experiences that ar
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="min-h-screen py-16 sm:py-20 px-4 bg-zinc-900">
+    <section id="projects" class="py-16 sm:py-20 px-4 bg-zinc-900">
         <div class="container mx-auto">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 opacity-0" id="projects-heading">My Works</h2>
             
             <!-- Project Tabs -->
             <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12">
-                <button class="project-tab active px-4 sm:px-6 py-2 rounded-full border-2 border-white font-semibold transition-colors text-sm sm:text-base" data-category="all">
-                    All
-                </button>
                 <button class="project-tab px-4 sm:px-6 py-2 rounded-full border-2 border-white font-semibold transition-colors text-sm sm:text-base" data-category="major">
                     Major Projects
                 </button>
-                <button class="project-tab px-4 sm:px-6 py-2 rounded-full border-2 border-white font-semibold transition-colors text-sm sm:text-base" data-category="minor">
-                    Mini Builds
+                <button class="project-tab px-4 sm:px-6 py-2 rounded-full border-2 border-white font-semibold transition-colors text-sm sm:text-base" data-category="webpages">
+                    Web Pages
+                </button>
+                <button class="project-tab px-4 sm:px-6 py-2 rounded-full border-2 border-white font-semibold transition-colors text-sm sm:text-base" data-category="webapps">
+                    Web Apps
                 </button>
                 <button class="project-tab px-4 sm:px-6 py-2 rounded-full border-2 border-white font-semibold transition-colors text-sm sm:text-base" data-category="client">
-                    Freelance Projects
+                    Client Works
                 </button>
             </div>
 
             <!-- Project Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <!-- Project Card 1 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-start">
+                <!-- Major Project (1 card) -->
                 <div class="project-card opacity-0" data-category="major">
                     <div class="bg-[#112240] rounded-lg overflow-hidden h-full flex flex-col">
                         <div class="aspect-video bg-zinc-700 relative">
@@ -264,8 +265,8 @@ My goal is to blend design and development to create digital experiences that ar
                     </div>
                 </div>
 
-                <!-- Project Card 2 -->
-                <div class="project-card opacity-0" data-category="client">
+                <!-- Web Pages (3 cards) -->
+                <div class="project-card opacity-0" data-category="webpages">
                     <div class="bg-[#112240] rounded-lg overflow-hidden h-full flex flex-col">
                         <div class="aspect-video bg-zinc-700 relative">
                             <svg class="w-full h-full" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -274,12 +275,55 @@ My goal is to blend design and development to create digital experiences that ar
                             </svg>
                         </div>
                         <div class="p-4 sm:p-6 flex-grow flex flex-col">
-                            <h3 class="text-lg sm:text-xl font-bold mb-2">Portfolio Website</h3>
-                            <p class="text-sm sm:text-base text-gray-400 mb-4 flex-grow">A modern portfolio website with smooth animations and responsive design.</p>
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">Landing Page</h3>
+                            <p class="text-sm sm:text-base text-gray-400 mb-4 flex-grow">A modern landing page for a SaaS product with smooth animations.</p>
                             <div class="flex flex-wrap gap-2 mb-4">
                                 <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">HTML</span>
                                 <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">Tailwind</span>
-                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">GSAP</span>
+                            </div>
+                            <div class="flex gap-3 sm:gap-4">
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">Live Demo</a>
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-black transition-colors text-sm sm:text-base">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card opacity-0" data-category="webpages">
+                    <div class="bg-[#112240] rounded-lg overflow-hidden h-full flex flex-col">
+                        <div class="aspect-video bg-zinc-700 relative">
+                            <svg class="w-full h-full" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="225" fill="#27272A"/>
+                                <path d="M200 112.5 L200 112.5 M200 112.5 L200 112.5" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="p-4 sm:p-6 flex-grow flex flex-col">
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">Portfolio Page</h3>
+                            <p class="text-sm sm:text-base text-gray-400 mb-4 flex-grow">A personal portfolio page to showcase work and skills.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">HTML</span>
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">CSS</span>
+                            </div>
+                            <div class="flex gap-3 sm:gap-4">
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">Live Demo</a>
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-black transition-colors text-sm sm:text-base">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card opacity-0" data-category="webpages">
+                    <div class="bg-[#112240] rounded-lg overflow-hidden h-full flex flex-col">
+                        <div class="aspect-video bg-zinc-700 relative">
+                            <svg class="w-full h-full" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="225" fill="#27272A"/>
+                                <path d="M200 112.5 L200 112.5 M200 112.5 L200 112.5" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="p-4 sm:p-6 flex-grow flex flex-col">
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">Blog Page</h3>
+                            <p class="text-sm sm:text-base text-gray-400 mb-4 flex-grow">A clean and responsive blog page layout.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">HTML</span>
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">Bootstrap</span>
                             </div>
                             <div class="flex gap-3 sm:gap-4">
                                 <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">Live Demo</a>
@@ -289,8 +333,8 @@ My goal is to blend design and development to create digital experiences that ar
                     </div>
                 </div>
 
-                <!-- Project Card 3 -->
-                <div class="project-card opacity-0" data-category="minor">
+                <!-- Web Apps (3 cards) -->
+                <div class="project-card opacity-0" data-category="webapps">
                     <div class="bg-[#112240] rounded-lg overflow-hidden h-full flex flex-col">
                         <div class="aspect-video bg-zinc-700 relative">
                             <svg class="w-full h-full" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -299,12 +343,79 @@ My goal is to blend design and development to create digital experiences that ar
                             </svg>
                         </div>
                         <div class="p-4 sm:p-6 flex-grow flex flex-col">
-                            <h3 class="text-lg sm:text-xl font-bold mb-2">Task Manager</h3>
-                            <p class="text-sm sm:text-base text-gray-400 mb-4 flex-grow">A simple but powerful task management application with drag-and-drop functionality.</p>
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">Task Manager App</h3>
+                            <p class="text-sm sm:text-base text-gray-400 mb-4 flex-grow">A task management app with drag-and-drop and real-time sync.</p>
                             <div class="flex flex-wrap gap-2 mb-4">
                                 <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">Vue.js</span>
                                 <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">Firebase</span>
-                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">Tailwind</span>
+                            </div>
+                            <div class="flex gap-3 sm:gap-4">
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">Live Demo</a>
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-black transition-colors text-sm sm:text-base">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card opacity-0" data-category="webapps">
+                    <div class="bg-[#112240] rounded-lg overflow-hidden h-full flex flex-col">
+                        <div class="aspect-video bg-zinc-700 relative">
+                            <svg class="w-full h-full" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="225" fill="#27272A"/>
+                                <path d="M200 112.5 L200 112.5 M200 112.5 L200 112.5" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="p-4 sm:p-6 flex-grow flex flex-col">
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">Weather App</h3>
+                            <p class="text-sm sm:text-base text-gray-400 mb-4 flex-grow">A weather forecast app using OpenWeatherMap API.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">JavaScript</span>
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">API</span>
+                            </div>
+                            <div class="flex gap-3 sm:gap-4">
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">Live Demo</a>
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-black transition-colors text-sm sm:text-base">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card opacity-0" data-category="webapps">
+                    <div class="bg-[#112240] rounded-lg overflow-hidden h-full flex flex-col">
+                        <div class="aspect-video bg-zinc-700 relative">
+                            <svg class="w-full h-full" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="225" fill="#27272A"/>
+                                <path d="M200 112.5 L200 112.5 M200 112.5 L200 112.5" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="p-4 sm:p-6 flex-grow flex flex-col">
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">Notes App</h3>
+                            <p class="text-sm sm:text-base text-gray-400 mb-4 flex-grow">A simple notes app with local storage support.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">JavaScript</span>
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">LocalStorage</span>
+                            </div>
+                            <div class="flex gap-3 sm:gap-4">
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">Live Demo</a>
+                                <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-black transition-colors text-sm sm:text-base">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Works (1 card) -->
+                <div class="project-card opacity-0" data-category="client">
+                    <div class="bg-[#112240] rounded-lg overflow-hidden h-full flex flex-col">
+                        <div class="aspect-video bg-zinc-700 relative">
+                            <svg class="w-full h-full" viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="225" fill="#27272A"/>
+                                <path d="M200 112.5 L200 112.5 M200 112.5 L200 112.5" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="p-4 sm:p-6 flex-grow flex flex-col">
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">Client Portfolio</h3>
+                            <p class="text-sm sm:text-base text-gray-400 mb-4 flex-grow">A portfolio website built for a freelance client.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">HTML</span>
+                                <span class="px-2 sm:px-3 py-1 bg-zinc-700 rounded-full text-xs sm:text-sm">CSS</span>
                             </div>
                             <div class="flex gap-3 sm:gap-4">
                                 <a href="#" class="px-4 sm:px-6 py-2 sm:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">Live Demo</a>
@@ -433,6 +544,6 @@ My goal is to blend design and development to create digital experiences that ar
 
     <!-- EmailJS Script -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
