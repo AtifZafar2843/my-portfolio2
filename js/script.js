@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Show/hide button based on scroll position
     window.addEventListener('scroll', () => {
         if (window.scrollY > 500) {
+            scrollTopButton.style.display = 'block';
             gsap.to(scrollTopButton, {
                 opacity: 1,
                 duration: 0.3,
@@ -21,7 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.to(scrollTopButton, {
                 opacity: 0,
                 duration: 0.3,
-                ease: 'power2.in'
+                ease: 'power2.in',
+                onComplete: () => {
+                    scrollTopButton.style.display = 'none';
+                }
             });
         }
     });
